@@ -1,0 +1,9 @@
+[settings]
+torrentDirectory = '/torrents'
+seenFile = '/data/seen.toml'
+watchFile = '/data/watch.toml'
+refresh = 60
+
+[[source]]
+name = 'Nyaa Torrents (anime, English translated)'
+url = 'https://nyaa.si/?page=rss&q=%S&c=1_2&f=0'

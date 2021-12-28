@@ -1,0 +1,21 @@
+version: "3"
+services:
+  torrentino:
+    build:
+      context: .
+      args:
+        - UID=1000        
+    image: ghcr.io/foxolotl/torrentino:latest
+    container_name: torrentino
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:6881:6881"
+      - "0.0.0.0:8080:8080"
+      - "0.0.0.0:22:22"
+    volumes:
+      - ${HOME}/docker/volumes/torrentino-downloads:/downloads
+      - ${HOME}/docker/volumes/torrentino-data:/data
+      - ${HOME}/.ssh/id_ed25519.pub:/authorized_keys
+    environment:
+      - WEB_USER=user
+      - WEB_PASSWORD=password

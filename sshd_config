@@ -1,0 +1,9 @@
+HostKey /data/ssh_host_rsa_key
+HostKey /data/ssh_host_ecdsa_key
+HostKey /data/ssh_host_ed25519_key
+
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
