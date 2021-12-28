@@ -1,7 +1,7 @@
 #!/bin/sh
-chown -R $UID:nogroup /torrents /etc/transmission-daemon
+mkdir -p /data/transmission-daemon
+chown -R $UID:nogroup /torrents /data/transmission-daemon
 chown $UID:nogroup /downloads /data /authorized_keys
-mkdir -p /data/etc/transmission-daemon/torrents
 
 if [ ! -f "/data/ssh_host_rsa_key" ]; then
 	ssh-keygen -f /data/ssh_host_rsa_key -N '' -t rsa
@@ -25,7 +25,7 @@ setpriv --reuid=$UID \
         --regid=nogroup \
         --init-groups \
         --inh-caps=-all \
-        transmission-daemon -P 6881 -p 8080 -a *.*.*.* -c /torrents -w /downloads -t -u $WEB_USER -v $WEB_PASSWORD -g /etc/transmission-daemon
+        transmission-daemon -P 6881 -p 8080 -a *.*.*.* -c /torrents -w /downloads -t -u $WEB_USER -v $WEB_PASSWORD -g /data/transmission-daemon
 
 echo Starting torrentino....
 exec setpriv --reuid=$UID \

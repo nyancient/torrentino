@@ -42,13 +42,11 @@ COPY config.toml /config.toml
 COPY startup.sh /startup.sh
 COPY sshd_config /etc/ssh/sshd_config
 COPY shell.sh /shell.sh
-COPY transmission-daemon-settings.json /etc/transmission-daemon/settings.json
 RUN mkdir /torrents && \
     chmod 755 /shell.sh && \
     echo /shell.sh >> /etc/shells && \
     rm /etc/motd && \
-    ln -s ${JAVA_HOME}/bin/java /usr/bin/java && \
-    ln -s /data/etc/transmission-daemon/torrents /etc/transmission-daemon/torrents
+    ln -s ${JAVA_HOME}/bin/java /usr/bin/java
 
 WORKDIR /home/torrentino
 
